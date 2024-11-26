@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="user-info">
+        <img src="./img/icon.png" alt="Usuário" class="user-photo">
+        <h1 class="user-name">User</h1>
+        <form class="password-form" id="password-form">
+            <input type="password" id="password" class="password-input" placeholder="Senha" required>
+            <button type="submit" class="submit-btn">></button>
+        </form>
+    </div>
+
+    <!-- Botão de três pontos -->
+    <button class="menu-btn" onclick="toggleErrorScreen()">⁝</button>
+
+    <!-- Tela de erro "Unknown Error" -->
+    <div id="error-screen" class="error-screen">
+        <div class="error-message">
+            <div class="errofora">
+                <span>Botton not found</span>
+                <span class="close-x" onclick="toggleErrorScreen()">X</span>
+            </div> 
+
+            <div class="errocontainer">
+                <span class="circle-x">X</span>
+                <h2>Unknown Error</h2>
+                <h3>ERROR: 19.5.14.8.1</h3>
+                <button onclick="toggleErrorScreen()" class="close-btn">Close</button>
+            </div>            
+        </div>
+    </div>
+
+    <!-- Tela de erro simples "Senha Incorreta" -->
+    <div id="simple-error-screen" class="simple-error-screen">
+        <div class="simple-error-message">
+            <h2>Senha incorreta.</h2>
+            <h3>Tente novamente.</h3>
+            <button onclick="toggleSimpleErrorScreen()" class="simple-close-btn">Fechar</button>
+        </div>            
+    </div>
+
+    <script>
+        // Função para alternar entre as telas de erro
+        function toggleErrorScreen() {
+            const errorScreen = document.getElementById("error-screen");
+            errorScreen.classList.toggle("show");
+        }
+
+        // Função para alternar a tela de erro simples "Senha Incorreta"
+        function toggleSimpleErrorScreen() {
+            const simpleErrorScreen = document.getElementById("simple-error-screen");
+            simpleErrorScreen.classList.toggle("show");
+        }
+
+        // Função para validar a senha e exibir a mensagem apropriada
+        document.getElementById("password-form").addEventListener("submit", function(event) {
+            event.preventDefault();  // Impede o envio do formulário
+            const password = document.getElementById("password").value.toLowerCase();  // Obtém a senha em minúsculas
+
+            // Verifica se a senha está correta
+            if (password === "senha") {
+                window.location.href = "inicial.html";  // Redireciona para outra página
+            } else {
+                toggleSimpleErrorScreen();  // Exibe a tela de erro "Senha Incorreta"
+            }
+        });
+    </script>
+</body>
+</html>
