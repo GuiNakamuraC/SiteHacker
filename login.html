@@ -30,7 +30,7 @@
             <div class="errocontainer">
                 <span class="circle-x">X</span>
                 <h2>Unknown Error</h2>
-                <h3>ERROR: 19.5.14.8.1</h3>
+                <h3>ERROR: <b>19.5.14.8.1</b></h3>
                 <button onclick="toggleErrorScreen()" class="close-btn">Close</button>
             </div>            
         </div>
@@ -65,7 +65,7 @@
 
             // Verifica se a senha está correta
             if (password === "senha") {
-                window.location.href = "inicial.html";  // Redireciona para outra página
+                window.location.href = "carregando.html";  // Redireciona para outra página
             } else {
                 toggleSimpleErrorScreen();  // Exibe a tela de erro "Senha Incorreta"
             }
