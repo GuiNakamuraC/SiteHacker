@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregando</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Tela de carregamento -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-message">
+            <h2>Entrando...</h2> <!-- Texto maior -->
+            <p></p>
+            <div class="spinner"></div>
+        </div>
+    </div>    
+
+    <script>
+        // Mostra a tela de carregamento e redireciona após 5 segundos
+        document.addEventListener("DOMContentLoaded", function () {
+            const loadingScreen = document.getElementById("loading-screen");
+
+            setTimeout(() => {
+                loadingScreen.style.display = "none"; // Esconde a tela de carregamento
+                window.location.href = "inicial.html"; // Redireciona para a página inicial
+            }, 3000); // 5 segundos
+        });
+    </script>
+</body>
+</html>
