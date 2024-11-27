@@ -1,0 +1,135 @@
+/* Reset básico */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    background: url('../img/fundo.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Área de trabalho */
+.desktop {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-left: 25px;
+    padding-top: 25px;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Folders */
+.folders {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+/* Colunas de pastas */
+.folder-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Estilos gerais de pasta */
+.folder {
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Imagens de ícones */
+.folder img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+}
+
+/* Efeito de hover para pastas */
+.folder:hover {
+    transform: scale(1.1);
+}
+
+/* Barra de tarefas */
+.taskbar {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.9);
+    height: 50px;
+    padding: 0 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Botão do menu iniciar */
+.start-menu img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Ícones da barra de tarefas */
+.taskbar-icons img {
+    width: 32px;
+    height: 32px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.taskbar-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Relógio */
+.clock {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 10%;
+}
+
+.rectangle {
+    width: 350px; /* Largura do retângulo */
+    height: 45px; /* Altura do retângulo */
+    background-color: white; /* Cor do fundo */
+    margin: 20px; /* Espaçamento ao redor do retângulo */
+    color: #000;
+}
+
+.espaco {
+    width: 550px; /* Largura do retângulo */
+    height: 45px; /* Altura do retângulo */
+    background: rgba(30, 30, 30, 0.9); /* Cor do fundo */
+    margin: 20px; /* Espaçamento ao redor do retângulo */
+}
+
+p {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 20px;
+}
