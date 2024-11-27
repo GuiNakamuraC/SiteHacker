@@ -1,0 +1,270 @@
+/* Reset básico */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    background-color: #fff;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Barra de tarefas */
+.taskbar {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.9);
+    height: 50px;
+    padding: 0 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Botão do menu iniciar */
+.start-menu img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Ícones da barra de tarefas */
+.taskbar-icons img {
+    width: 32px;
+    height: 32px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.taskbar-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Relógio */
+.clock {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 10%;
+}
+
+.rectangle {
+    width: 350px; /* Largura do retângulo */
+    height: 45px; /* Altura do retângulo */
+    background-color: white; /* Cor do fundo */
+    margin: 20px; /* Espaçamento ao redor do retângulo */
+    color: #00000009;
+}
+
+.square {
+    width: 50px; /* Largura do retângulo */
+    height: 50px; /* Altura do retângulo */
+    background-color: rgb(200, 200, 200); /* Cor do fundo */
+    padding-top: 15px;
+}
+
+.espaco {
+    width: 550px; /* Largura do retângulo */
+    height: 45px; /* Altura do retângulo */
+    background-color: transparent; /* Cor do fundo */
+    margin: 20px; /* Espaçamento ao redor do retângulo */
+}
+
+p {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Tela inicial */
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 50px); /* Deixa a tela inicial ocupar o restante da tela, sem a barra de tarefas */
+    background-color: #f5f5f5; /* Fundo claro, semelhante ao Chrome */
+    color: #333; /* Cor do texto */
+    text-align: center;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Favoritos */
+.favorites {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.favorite-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.favorite-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Barra de aba (cima) */
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #303030;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 45px;  /* Aumentando a altura da barra */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Ícone do navegador */
+.window-icon {
+    display: flex;
+    align-items: center;
+}
+
+.chrome-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Título da aba */
+.window-title {
+    width: 160px;  /* Definindo uma largura fixa para o título */
+    display: flex;
+    font-size: 14px;
+    color: #333;
+    background-color: #555;
+    border-radius: 20%;
+}
+
+/* Botões de controle */
+.window-controls {
+    display: flex;
+    align-items: center;
+}
+
+.control-button {
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-button:hover {
+    background-color: #979797;
+}
+
+/* Cores para cada botão */
+.close-button {
+    color: red;
+}
+
+.maximize-button {
+    color: #4CAF50;
+}
+
+.minimize-button {
+    color: gray;
+}
+
+/* Tela inicial */
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 85px); /* Ajusta para não sobrepor a barra de tarefas e a aba */
+    background-color: #f5f5f5; /* Fundo claro, semelhante ao Chrome */
+    color: #333; /* Cor do texto */
+    text-align: center;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Favoritos */
+.favorites {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.favorite-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.favorite-item p {
+    font-size: 14px;
+    color: #555;
+}
