@@ -12,16 +12,17 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #1e90ff, #00c3ff);
+            background: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
-            font-family: 'Arial', sans-serif;
-            color: white;
-            animation: color-shift 10s infinite alternate;
+            animation: bg-flicker 10s infinite alternate;
         }
 
-        @keyframes color-shift {
-            0% { background: linear-gradient(135deg, #1e90ff, #00c3ff); }
-            100% { background: linear-gradient(135deg, #ff69b4, #ff4500); }
+        @keyframes bg-flicker {
+            0% { background-color: #000; }
+            50% { background-color: #003300; }
+            100% { background-color: #000; }
         }
 
         .container {
@@ -41,25 +42,26 @@
         }
 
         h1 {
-            font-size: 60px;
+            font-size: 50px;
             margin: 0;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
             animation: glow 2s infinite alternate;
         }
 
         @keyframes glow {
             from {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+                text-shadow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.3);
             }
             to {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+                text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
             }
         }
 
         p {
-            font-size: 24px;
+            font-size: 20px;
             margin-top: 20px;
             animation: bounce 1.5s infinite;
+            font-weight: bold;
         }
 
         @keyframes bounce {
@@ -69,6 +71,34 @@
             50% {
                 transform: translateY(-10px);
             }
+        }
+
+        button {
+            background-color: #00FF00;
+            color: black;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            }
+            to {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+            }
+        }
+
+        button:hover {
+            background-color: #008000;
         }
 
         .confetti {
@@ -85,7 +115,7 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background: white;
+            background: #00FF00;
             opacity: 0.7;
             animation: fall 5s infinite;
         }
@@ -100,41 +130,12 @@
                 opacity: 0;
             }
         }
-
-        button {
-            background-color: #ff6347;
-            color: white;
-            padding: 15px 30px;
-            font-size: 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
-            animation: pulse 1.5s infinite alternate;
-        }
-
-        @keyframes pulse {
-            from {
-                transform: scale(1);
-                box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
-            }
-            to {
-                transform: scale(1.1);
-                box-shadow: 0 0 20px rgba(255, 99, 71, 1);
-            }
-        }
-
-        button:hover {
-            background-color: #ff4500;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>VOCÊ SALVOU O DIA!</h1>
-        <p>Parabens, com sua habilidade incrìvel você salvou esta empresa!
-            Vá pegar seu prêmio!
-        </p>
+        <p>Parabéns, com sua habilidade incrível você salvou esta empresa!<br>Vá pegar seu prêmio!</p>
         <button onclick="location.href='index.html'">Voltar ao Início</button>
     </div>
 

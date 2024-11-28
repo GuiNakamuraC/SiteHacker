@@ -6,22 +6,46 @@
     <title>Troca de Letras - Edição Animada</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             height: 100vh;
             margin: 0;
-            background-image: linear-gradient(135deg, #2c3e50, #4ca1af);
-            color: white;
+            background-color: black;
+            color: #00FF00;
             overflow: hidden;
-            animation: bg-pan 10s infinite alternate;
+            animation: bg-pan 5s infinite alternate;
+            font-size: 24px;
         }
 
         @keyframes bg-pan {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
+        }
+
+        .symbol-section {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
+        }
+
+        .symbol {
+            font-size: 40px;
+            background-color: #333;
+            color: #00FF00;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .symbol:hover {
+            background-color: #111;
+            transform: rotate(10deg);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
         }
 
         .container {
@@ -31,10 +55,11 @@
             border-radius: 15px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #00FF00;
         }
 
         .container:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7);
         }
 
@@ -50,24 +75,25 @@
             display: inline-block;
             text-align: center;
             line-height: 60px;
-            background-color: #ddd;
-            color: black;
+            background-color: #333;
+            color: #00FF00;
             border-radius: 10px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: 1px solid #00FF00;
         }
 
         .letter:hover {
-            background-color: #ffd700;
+            background-color: #111;
             transform: rotate(10deg);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
         }
 
         .arrow, button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #111;
+            color: #00FF00;
             font-size: 18px;
-            border: none;
+            border: 1px solid #00FF00;
             padding: 10px 15px;
             cursor: pointer;
             border-radius: 5px;
@@ -75,29 +101,32 @@
         }
 
         .arrow:hover, button:hover {
-            background-color: #45a049;
+            background-color: #00FF00;
+            color: black;
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         button {
-            background-color: #2196F3;
             margin-top: 20px;
             font-size: 20px;
             padding: 10px 20px;
             letter-spacing: 1.2px;
+            border: 1px solid #00FF00;
         }
 
         button:hover {
-            background-color: #0b7dda;
+            background-color: #00FF00;
+            color: black;
             transform: scale(1.05);
         }
 
         #feedback {
             font-size: 20px;
-            color: #ff4757;
+            color: #FF0000;
             margin-top: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Courier New', Courier, monospace;
         }
 
         /* Modal */
@@ -121,26 +150,97 @@
             opacity: 1;
         }
 
-        .modal-content, .modal-fail {
-            background-color: #28a745;
+        .modal-content{
+            background-color: #000000;
             color: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             animation: pop-in 0.5s ease-out;
+            font-family: 'Courier New', Courier, monospace;
+            border: 2px solid #00FF00; /* Borda verde */
+        }
+        .modal-fail{
+            background-color: #000000;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            animation: pop-in 0.5s ease-out;
+            font-family: 'Courier New', Courier, monospace;
+            border: 2px solid #ff0000; /* Borda verde */
         }
 
+
         .modal-fail {
-            background-color: #e74c3c;
+            background-color: #000000;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            border: 2px solid #ff0000; /* Borda verde */
         }
 
         @keyframes pop-in {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
+
+        .fail-msg {
+            font-size: 22px;
+            animation: glitch 1s infinite;
+            color: #FF0000;
+        }
+
+        /* Estilo dos botões "Continuar" e "Tentar novamente" */
+        .modal-fail button {
+            background-color: black;
+            color: #ff0000;
+            font-size: 18px;
+            border: 2px solid #ff0000;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            letter-spacing: 1.5px;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .modal-content button{
+            background-color: black;
+            color: #00ff04;
+            font-size: 18px;
+            border: 2px solid #00ff11;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            letter-spacing: 1.5px;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .modal-content button:hover{
+            background-color: #00ff26;
+            color: black;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-fail button:hover {
+            background-color: #ff0000;
+            color: black;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
+    <div class="symbol-section">
+        <div class="symbol">#</div>
+        <div class="symbol">@</div>
+        <div class="symbol">$</div>
+        <div class="symbol">%</div>
+        <div class="symbol">&</div>
+    </div>
+    
     <div class="container">
         <div class="letter-box">
             <button class="arrow" onclick="changeLetter(0, 1)">↑</button>
@@ -179,7 +279,7 @@
 
     <div id="fail-modal" class="modal">
         <div class="modal-fail">
-            <p>⚠️ Erro crítico! O tempo acabou! ⚠️</p>
+            <p class="fail-msg">CÓDIGO ERRADO</p>
             <button onclick="resetGame()">Tentar novamente</button>
         </div>
     </div>
