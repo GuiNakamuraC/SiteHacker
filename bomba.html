@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de Letras - Edição Animada</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: white;
+            overflow: hidden;
+            animation: bg-pan 10s infinite alternate;
+        }
+
+        @keyframes bg-pan {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .letter-box {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .letter {
+            font-size: 50px;
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            text-align: center;
+            line-height: 60px;
+            background-color: #ddd;
+            color: black;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .letter:hover {
+            background-color: #ffd700;
+            transform: rotate(10deg);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .arrow, button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .arrow:hover, button:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            background-color: #2196F3;
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 10px 20px;
+            letter-spacing: 1.2px;
+        }
+
+        button:hover {
+            background-color: #0b7dda;
+            transform: scale(1.05);
+        }
+
+        #feedback {
+            font-size: 20px;
+            color: #ff4757;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.4s;
+        }
+
+        .modal.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content, .modal-fail {
+            background-color: #28a745;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            animation: pop-in 0.5s ease-out;
+        }
+
+        .modal-fail {
+            background-color: #e74c3c;
+        }
+
+        @keyframes pop-in {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="letter-box">
+            <button class="arrow" onclick="changeLetter(0, 1)">↑</button>
+            <div class="letter" id="letter-0">A</div>
+            <button class="arrow" onclick="changeLetter(0, -1)">↓</button>
+        </div>
+        <div class="letter-box">
+            <button class="arrow" onclick="changeLetter(1, 1)">↑</button>
+            <div class="letter" id="letter-1">A</div>
+            <button class="arrow" onclick="changeLetter(1, -1)">↓</button>
+        </div>
+        <div class="letter-box">
+            <button class="arrow" onclick="changeLetter(2, 1)">↑</button>
+            <div class="letter" id="letter-2">A</div>
+            <button class="arrow" onclick="changeLetter(2, -1)">↓</button>
+        </div>
+        <div class="letter-box">
+            <button class="arrow" onclick="changeLetter(3, 1)">↑</button>
+            <div class="letter" id="letter-3">A</div>
+            <button class="arrow" onclick="changeLetter(3, -1)">↓</button>
+        </div>
+        <div class="letter-box">
+            <button class="arrow" onclick="changeLetter(4, 1)">↑</button>
+            <div class="letter" id="letter-4">A</div>
+            <button class="arrow" onclick="changeLetter(4, -1)">↓</button>
+        </div>
+        <button onclick="validateAnswer()">Validar</button>
+        <p id="feedback"></p>
+    </div>
+
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <button onclick="continueGame()">Continuar</button>
+        </div>
+    </div>
+
+    <div id="fail-modal" class="modal">
+        <div class="modal-fail">
+            <p>⚠️ Erro crítico! O tempo acabou! ⚠️</p>
+            <button onclick="resetGame()">Tentar novamente</button>
+        </div>
+    </div>
+
+    <script>
+        let letters = ['A', 'A', 'A', 'A', 'A'];
+
+        function changeLetter(index, direction) {
+            let currentLetter = letters[index];
+            let newLetter = String.fromCharCode(currentLetter.charCodeAt(0) + direction);
+            if (newLetter >= 'A' && newLetter <= 'Z') {
+                letters[index] = newLetter;
+                document.getElementById(`letter-${index}`).innerText = newLetter;
+            }
+        }
+
+        function validateAnswer() {
+            const correctAnswer = ['A', 'B', 'A', 'B', 'A'];
+            if (JSON.stringify(letters) === JSON.stringify(correctAnswer)) {
+                document.getElementById('success-modal').classList.add('show');
+            } else {
+                document.getElementById('fail-modal').classList.add('show');
+            }
+        }
+
+        function continueGame() {
+            // Redireciona para a página de "Você Salvou o Dia!"
+            window.location.href = "salvo.html"; // Nome do arquivo da página de celebração
+        }
+
+        function resetGame() {
+            document.getElementById('fail-modal').classList.remove('show');
+            letters = ['A', 'A', 'A', 'A', 'A'];
+            for (let i = 0; i < letters.length; i++) {
+                document.getElementById(`letter-${i}`).innerText = letters[i];
+            }
+        }
+    </script>
+</body>
+</html>
