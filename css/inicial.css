@@ -133,3 +133,18 @@ p {
     margin-left: 10px;
     font-size: 20px;
 }
+
+.square {
+    width: 56px; /* Largura do retângulo */
+    height: 50px; /* Altura do retângulo */
+    background-color: rgba(200, 200, 200, 0.479); /* Cor do fundo */
+    display: flex; /* Usa o Flexbox */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    justify-content: center; /* Alinha o conteúdo horizontalmente */
+}
+
+/* Estilo do ícone dentro do .square */
+.square img {
+    width: 28px; /* Ajusta o tamanho do ícone */
+    height: 28px; /* Ajusta o tamanho do ícone */
+}

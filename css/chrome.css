@@ -10,7 +10,7 @@ body, html {
 
 /* Corpo da página */
 body {
-    background-color: #fff;
+    background-color: #414141;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
@@ -67,10 +67,18 @@ body {
 }
 
 .square {
-    width: 50px; /* Largura do retângulo */
+    width: 56px; /* Largura do retângulo */
     height: 50px; /* Altura do retângulo */
-    background-color: rgb(200, 200, 200); /* Cor do fundo */
-    padding-top: 15px;
+    background-color: rgba(200, 200, 200, 0.479); /* Cor do fundo */
+    display: flex; /* Usa o Flexbox */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    justify-content: center; /* Alinha o conteúdo horizontalmente */
+}
+
+/* Estilo do ícone dentro do .square */
+.square img {
+    width: 28px; /* Ajusta o tamanho do ícone */
+    height: 28px; /* Ajusta o tamanho do ícone */
 }
 
 .espaco {
@@ -93,7 +101,7 @@ p {
     align-items: center;
     justify-content: center;
     height: calc(100vh - 50px); /* Deixa a tela inicial ocupar o restante da tela, sem a barra de tarefas */
-    background-color: #f5f5f5; /* Fundo claro, semelhante ao Chrome */
+    background-color: #414141; /* Fundo claro, semelhante ao Chrome */
     color: #333; /* Cor do texto */
     text-align: center;
 }
@@ -108,10 +116,10 @@ p {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #525252;;
     border-radius: 24px;
     outline: none;
-    background-color: #fff;
+    background-color: #414141;
 }
 
 /* Favoritos */
@@ -136,20 +144,17 @@ p {
 
 .favorite-item p {
     font-size: 14px;
-    color: #555;
+    color: #303030;
 }
 
-/* Barra de aba (cima) */
 .window-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* Alinha tudo à esquerda */
     background-color: #303030;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0px;
-    padding-left: 5px;
-    padding-right: 5px;
-    height: 45px;  /* Aumentando a altura da barra */
+    border-bottom: 1px solid #525252;
+    padding: 10px 5px; /* Ajustei para que o padding seja uniforme */
+    height: 30px; /* Altura da barra */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
@@ -165,18 +170,18 @@ p {
 }
 
 .chrome-icon {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 
-/* Título da aba */
 .window-title {
-    width: 160px;  /* Definindo uma largura fixa para o título */
+    width: 15%; /* Definindo uma largura fixa para o título */
     display: flex;
     font-size: 14px;
-    color: #333;
-    background-color: #555;
-    border-radius: 20%;
+    color: #fff;
+    background-color: #414141;
+    border-radius: 20px 20px 2px 2px; /* Apenas os cantos superiores são arredondados */
+    padding-left: 10px;
 }
 
 /* Botões de controle */
@@ -186,11 +191,11 @@ p {
 }
 
 .control-button {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     background: transparent;
     border: none;
-    font-size: 14px;
+    font-size: 20px;
     color: #333;
     cursor: pointer;
     margin-left: 5px;
@@ -203,17 +208,34 @@ p {
     background-color: #979797;
 }
 
+.control-button-red {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.control-button-red:hover {
+    background-color: #ff0000;
+}
+
 /* Cores para cada botão */
 .close-button {
-    color: red;
+    color: white;
 }
 
 .maximize-button {
-    color: #4CAF50;
+    color: white;
 }
 
 .minimize-button {
-    color: gray;
+    color: white;
 }
 
 /* Tela inicial */
@@ -223,7 +245,7 @@ p {
     align-items: center;
     justify-content: center;
     height: calc(100vh - 85px); /* Ajusta para não sobrepor a barra de tarefas e a aba */
-    background-color: #f5f5f5; /* Fundo claro, semelhante ao Chrome */
+    background-color: #414141; /* Fundo claro, semelhante ao Chrome */
     color: #333; /* Cor do texto */
     text-align: center;
 }
@@ -238,17 +260,17 @@ p {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #525252;
     border-radius: 24px;
     outline: none;
-    background-color: #fff;
+    background-color: rgba(30, 30, 30, 0.9);
 }
 
 /* Favoritos */
 .favorites {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
 }
 
 .favorite-item {
@@ -256,15 +278,70 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 5px; /* Adiciona um espaço em torno da imagem */
+    width: 85px;  /* Largura fixa para evitar que os itens se movam */
+    height: 85px; /* Altura fixa para evitar que os itens se movam */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave na cor de fundo */
+}
+
+.favorite-item:hover {
+    background-color: #525252;  /* Altera a cor de fundo no hover */
 }
 
 .favorite-item img {
-    width: 50px;
-    height: 50px;
+    width: 40px;  /* Tamanho da imagem */
+    height: 40px; /* Tamanho da imagem */
     margin-bottom: 10px;
+    border-radius: 100%;  /* Faz a imagem ficar redonda */
+    background-color: #303030;  /* Cor do fundo */
+    padding: 5px; /* Adiciona o padding para aumentar o tamanho do fundo */
+    box-sizing: content-box; /* Garantir que o padding não sobreponha a largura da imagem */
 }
 
 .favorite-item p {
     font-size: 14px;
-    color: #555;
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto dentro do elemento */
+    margin: 0; /* Remove margens que podem causar desalinhamento */
+    width: 100%; /* Garante que o texto ocupe toda a largura disponível */
+}
+
+.espaco_pequeno {
+    width: 2%; /* Largura do retângulo */
+    background-color: transparent; /* Cor do fundo */
+}
+
+.espaco_grande {
+    width: 65%;
+    background-color: transparent;
+}
+
+.espaco_baixo {
+    height: 5%;
+    background-color: transparent;
+}
+
+.window-search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinha tudo à esquerda */
+    background-color: #414141;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 5px; /* Ajustei para que o padding seja uniforme */
+    height: 30px; /* Altura da barra */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.search-top {
+    width: 90%;
+}
+
+.google-logo  {
+    width: 500px; /* Define a largura */
+    height: auto; /* Mantém a proporção */
 }

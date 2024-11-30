@@ -43,12 +43,20 @@
     </div>
 
     <!-- Tela de erro simples "Senha Incorreta" -->
-    <div id="simple-error-screen" class="simple-error-screen">
-        <div class="simple-error-message">
-            <h2>Senha incorreta.</h2>
-            <h3>Tente novamente.</h3>
-            <button onclick="toggleSimpleErrorScreen()" class="simple-close-btn">Fechar</button>
-        </div>            
+    <div id="simple-error-screen" class="error-screen">
+        <div class="error-message">
+            <div class="errofora">
+                <span>Try Again</span>
+                <span class="close-x" onclick="toggleErrorScreen()">X</span>
+            </div> 
+
+            <div class="errocontainer">
+                <span class="circle-x">X</span>
+                <h2>Password Incorrect</h2>
+                <h3>ERROR: <b>19.5.14.8.1</b></h3>
+                <button onclick="toggleSimpleErrorScreen()" class="simple-close-btn">Close</button>
+            </div>            
+        </div>
     </div>
 
     <script>

@@ -1,0 +1,451 @@
+/* Reset básico */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    background-color: #000000;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Barra de tarefas */
+.taskbar {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.9);
+    height: 50px;
+    padding: 0 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Botão do menu iniciar */
+.start-menu img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* Ícones da barra de tarefas */
+.taskbar-icons img {
+    width: 32px;
+    height: 32px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.taskbar-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Relógio */
+.clock {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 10%;
+}
+
+.rectangle {
+    width: 350px; /* Largura do retângulo */
+    height: 45px; /* Altura do retângulo */
+    background-color: white; /* Cor do fundo */
+    margin: 20px; /* Espaçamento ao redor do retângulo */
+    color: #00000009;
+}
+
+.square {
+    width: 56px; /* Largura do retângulo */
+    height: 50px; /* Altura do retângulo */
+    background-color: rgba(200, 200, 200, 0.479); /* Cor do fundo */
+    display: flex; /* Usa o Flexbox */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    justify-content: center; /* Alinha o conteúdo horizontalmente */
+}
+
+/* Estilo do ícone dentro do .square */
+.square img {
+    width: 28px; /* Ajusta o tamanho do ícone */
+    height: 28px; /* Ajusta o tamanho do ícone */
+}
+
+.espaco {
+    width: 550px; /* Largura do retângulo */
+    height: 45px; /* Altura do retângulo */
+    background-color: transparent; /* Cor do fundo */
+    margin: 20px; /* Espaçamento ao redor do retângulo */
+}
+
+p {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Tela inicial */
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 32px); /* Deixa a tela inicial ocupar o restante da tela, sem a barra de tarefas */
+    background-color: #2e8f1b; /* Fundo claro, semelhante ao Chrome */
+    background-image: url('../img/mapa.png'); /* Caminho da imagem de fundo */
+    background-size: cover; /* Faz com que a imagem cubra toda a área */
+    background-position: center; /* Centraliza a imagem */
+    color: #333; /* Cor do texto */
+    text-align: center;
+}
+
+
+/* Barra de pesquisa */
+.search-bar {
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #525252;;
+    border-radius: 24px;
+    outline: none;
+    background-color: #414141;
+}
+
+/* Favoritos */
+.favorites {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.favorite-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.favorite-item p {
+    font-size: 14px;
+    color: #303030;
+}
+
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinha tudo à esquerda */
+    background-color: #303030;
+    border-bottom: 1px solid #525252;
+    padding: 10px 5px; /* Ajustei para que o padding seja uniforme */
+    height: 30px; /* Altura da barra */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Ícone do navegador */
+.window-icon {
+    display: flex;
+    align-items: center;
+}
+
+.chrome-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.window-title {
+    width: 15%; /* Definindo uma largura fixa para o título */
+    display: flex;
+    font-size: 14px;
+    color: #fff;
+    background-color: #414141;
+    border-radius: 20px 20px 2px 2px; /* Apenas os cantos superiores são arredondados */
+    padding-left: 10px;
+}
+
+/* Botões de controle */
+.window-controls {
+    display: flex;
+    align-items: center;
+}
+
+.control-button {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-button:hover {
+    background-color: #979797;
+}
+
+.control-button-red {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.control-button-red:hover {
+    background-color: #ff0000;
+}
+
+/* Cores para cada botão */
+.close-button {
+    color: white;
+}
+
+.maximize-button {
+    color: white;
+}
+
+.minimize-button {
+    color: white;
+}
+
+/* Tela inicial */
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 85px); /* Ajusta para não sobrepor a barra de tarefas e a aba */
+    background-color: #414141; /* Fundo claro, semelhante ao Chrome */
+    color: #333; /* Cor do texto */
+    text-align: center;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #525252;
+    border-radius: 24px;
+    outline: none;
+    background-color: rgba(30, 30, 30, 0.9);
+}
+
+/* Favoritos */
+.favorites {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.favorite-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px; /* Adiciona um espaço em torno da imagem */
+    width: 85px;  /* Largura fixa para evitar que os itens se movam */
+    height: 85px; /* Altura fixa para evitar que os itens se movam */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave na cor de fundo */
+}
+
+.favorite-item:hover {
+    background-color: #525252;  /* Altera a cor de fundo no hover */
+}
+
+.favorite-item img {
+    width: 40px;  /* Tamanho da imagem */
+    height: 40px; /* Tamanho da imagem */
+    margin-bottom: 10px;
+    border-radius: 100%;  /* Faz a imagem ficar redonda */
+    background-color: #303030;  /* Cor do fundo */
+    padding: 5px; /* Adiciona o padding para aumentar o tamanho do fundo */
+    box-sizing: content-box; /* Garantir que o padding não sobreponha a largura da imagem */
+}
+
+.favorite-item p {
+    font-size: 14px;
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto dentro do elemento */
+    margin: 0; /* Remove margens que podem causar desalinhamento */
+    width: 100%; /* Garante que o texto ocupe toda a largura disponível */
+}
+
+.espaco_pequeno {
+    width: 2%; /* Largura do retângulo */
+    background-color: transparent; /* Cor do fundo */
+}
+
+.espaco_grande {
+    width: 65%;
+    background-color: transparent;
+}
+
+.espaco_baixo {
+    height: 5%;
+    background-color: transparent;
+}
+
+.window-search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinha tudo à esquerda */
+    background-color: #414141;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 5px; /* Ajustei para que o padding seja uniforme */
+    height: 30px; /* Altura da barra */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.search-top {
+    width: 90%;
+}
+
+.google-logo  {
+    width: 500px; /* Define a largura */
+    height: auto; /* Mantém a proporção */
+}
+
+/* Estilo do container de login */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #303030a4;
+    border: 2px solid #2e8f1b;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo da imagem do usuário no login */
+.login-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 2px solid #2e8f1b;
+}
+
+/* Estilo do formulário de login */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Estilo dos campos de entrada (login e senha) */
+.login-input {
+    width: 90%;
+    padding: 5%;
+    font-size: 16px;
+    border: 2px solid #2e8f1b;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #000000;
+    color: white;
+}
+
+/* Estilo do botão de login */
+.login-button {
+    padding: 12px;
+    background-color: #2e8f1b;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #116400;
+}
+
+/* Estilo do link "Esqueceu a Senha?" */
+.forgot-password {
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: rgb(29, 194, 14);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    text-shadow: 2px 2px 5px #0a3b00; /* Sombra vermelha */
+}
+
+/* Estilo da dica de senha */
+.password-hint {
+    background-color: #1fbb00;
+    color: #000000;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 16px;
+    display: none; /* Inicialmente oculto */
+}
+
+/* Quando o campo está focado */
+.login-input:focus {
+    border: 2px solid #116400;
+    outline: none; /* Remove a borda padrão */
+}
+
+/* Quando o campo está preenchido e válido */
+.login-input:valid {
+    background-color: #116400;
+    border: 2px solid #2e8f1b;
+}
+
+/* Quando o campo está vazio */
+.login-input:invalid {
+    background-color: #000000; /* Cor padrão */
+    border: 2px solid #2e8f1b; /* Cor inicial */
+}

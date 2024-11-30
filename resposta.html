@@ -26,26 +26,45 @@
         }
 
         .symbol-section {
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-evenly;
-            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); /* Cria 9 colunas de largura igual */
+            gap: 30px; /* Adiciona um pequeno espaçamento entre os símbolos */
+            width: 80%; /* Ajusta a largura para ocupar todo o espaço disponível */
+            justify-items: center; /* Centraliza os itens dentro de suas células */
+            justify-content: center; /* Centraliza todo o grid no eixo horizontal */
         }
 
         .symbol {
-            font-size: 40px;
+            font-size: 80px;
             background-color: #333;
             color: #00FF00;
             padding: 10px;
             border-radius: 10px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         .symbol:hover {
             background-color: #111;
-            transform: rotate(10deg);
+            transform: rotate(360deg); /* Gira o símbolo ao passar o mouse */
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .symbol::after {
+            content: ''; /* Inicializa o conteúdo para o símbolo */
+            transition: content 0.3s ease, transform 0.3s ease; /* Suaviza a transição */
+        }
+
+        /* Efeito de transição para a letra */
+        .symbol.hovered::after {
+            content: 'A'; /* Altera o conteúdo para 'A' quando a classe hovered for aplicada */
         }
 
         .container {
@@ -54,14 +73,15 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, width 0.3s; /* Adicionando a transição para a largura */
             border: 1px solid #00FF00;
-            width: 85%;
+            width: 85%; /* Largura inicial */
         }
 
         .container:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7);
+            width: 90%; /* Largura ao passar o mouse (ativado) */
         }
 
         .letter-box {
@@ -234,44 +254,6 @@
     </style>
 </head>
 <body>
-    <div class="symbol-section">
-        <div class="symbol">#</div>
-        <div class="symbol">@</div>
-        <div class="symbol">$</div>
-        <div class="symbol">%</div>
-        <div class="symbol">&</div>
-    </div>
-    
-    <div class="container">
-        <div class="letter-box">
-            <button class="arrow" onclick="changeLetter(0, 1)">↑</button>
-            <div class="letter" id="letter-0">A</div>
-            <button class="arrow" onclick="changeLetter(0, -1)">↓</button>
-        </div>
-        <div class="letter-box">
-            <button class="arrow" onclick="changeLetter(1, 1)">↑</button>
-            <div class="letter" id="letter-1">A</div>
-            <button class="arrow" onclick="changeLetter(1, -1)">↓</button>
-        </div>
-        <div class="letter-box">
-            <button class="arrow" onclick="changeLetter(2, 1)">↑</button>
-            <div class="letter" id="letter-2">A</div>
-            <button class="arrow" onclick="changeLetter(2, -1)">↓</button>
-        </div>
-        <div class="letter-box">
-            <button class="arrow" onclick="changeLetter(3, 1)">↑</button>
-            <div class="letter" id="letter-3">A</div>
-            <button class="arrow" onclick="changeLetter(3, -1)">↓</button>
-        </div>
-        <div class="letter-box">
-            <button class="arrow" onclick="changeLetter(4, 1)">↑</button>
-            <div class="letter" id="letter-4">A</div>
-            <button class="arrow" onclick="changeLetter(4, -1)">↓</button>
-        </div>
-        <button onclick="validateAnswer()">Validar</button>
-        <p id="feedback"></p>
-    </div>
-
     <div id="success-modal" class="modal">
         <div class="modal-content">
             <button onclick="continueGame()">Continuar</button>
@@ -285,38 +267,45 @@
         </div>
     </div>
 
+    <div class="symbol-section">
+        <div class="symbol" onmouseover="changeToLetter(this, 0)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 1)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 2)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 3)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 4)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 5)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 6)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 7)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 8)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 9)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 10)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 11)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 12)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 13)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 14)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 15)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 16)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 17)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 18)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 19)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 20)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 21)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 22)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 23)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 24)" onmouseout="resetToSymbol(this)">#</div>
+        <div class="symbol" onmouseover="changeToLetter(this, 25)" onmouseout="resetToSymbol(this)">#</div>
+    </div>
+
     <script>
-        let letters = ['A', 'A', 'A', 'A', 'A'];
-
-        function changeLetter(index, direction) {
-            let currentLetter = letters[index];
-            let newLetter = String.fromCharCode(currentLetter.charCodeAt(0) + direction);
-            if (newLetter >= 'A' && newLetter <= 'Z') {
-                letters[index] = newLetter;
-                document.getElementById(`letter-${index}`).innerText = newLetter;
-            }
+        function changeToLetter(element, index) {
+            // Muda o conteúdo de # para a letra correspondente
+            const letter = String.fromCharCode(65 + index);  // 65 é o código ASCII de 'A'
+            element.innerText = letter;
         }
 
-        function validateAnswer() {
-            const correctAnswer = ['A', 'B', 'A', 'B', 'A'];
-            if (JSON.stringify(letters) === JSON.stringify(correctAnswer)) {
-                document.getElementById('success-modal').classList.add('show');
-            } else {
-                document.getElementById('fail-modal').classList.add('show');
-            }
-        }
-
-        function continueGame() {
-            // Redireciona para a página de "Você Salvou o Dia!"
-            window.location.href = "salvo.html"; // Nome do arquivo da página de celebração
-        }
-
-        function resetGame() {
-            document.getElementById('fail-modal').classList.remove('show');
-            letters = ['A', 'A', 'A', 'A', 'A'];
-            for (let i = 0; i < letters.length; i++) {
-                document.getElementById(`letter-${i}`).innerText = letters[i];
-            }
+        function resetToSymbol(element) {
+            // Restaura o conteúdo para o símbolo '#'
+            element.innerText = '#';
         }
     </script>
 </body>

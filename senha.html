@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senha</title>
+    <link rel="stylesheet" href="css/senha.css">
+    <style>
+        body {
+            background-image: url('../img/fundo_hacker.png') no-repeat center center/cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de aba (cima) -->
+    <div class="window-header">
+        <div class="espaco_pequeno"></div>
+        <div class="window-icon">
+            <img src="img/chrome-icon.png" alt="Ícone do Chrome" class="chrome-icon" onclick="goToInitialPage()">
+        </div>
+        <div class="espaco_pequeno"></div>
+        <div class="window-title">
+            <img src="./img/bomba.png" alt="bomba" style="width: 25px; height: 25px; margin-top: 7px;">
+            <p>bomba</p>
+            <p class="espaco_pequeno"></p>
+            <p class="espaco_pequeno"></p>
+            <p class="espaco_pequeno"></p>
+            <p class="espaco_pequeno"></p>
+            <p>x</p>
+        </div>
+        <div class="espaco_grande"></div>
+        <div class="window-controls">
+            <button class="control-button minimize-button" title="Minimizar" onclick="goToInitialPage()">-</button>
+            <button class="control-button maximize-button" title="Maximizar" onclick="goToInitialPage()">□</button>
+            <button class="control-button-red close-button" title="Fechar" onclick="goToInitialPage()">X</button>
+        </div>
+    </div>
+
+    <div class="window-search">
+        <p class="espaco_pequeno"></p>
+        <div class="search-top">
+            <input type="text" placeholder="https://www.bomba.com" class="search-input">
+        </div>
+    </div>
+
+    <!-- Tela inicial (Login) -->
+    <div class="main-screen">
+        <!-- Container de Login -->
+        <div class="login-container">
+            <img src="img/icon_hacker.png" alt="Foto do usuário" class="login-img">
+            <form class="login-form" onsubmit="return validateLogin()">
+                <input type="text" placeholder="Usuário" class="login-input" id="username" required>
+                <input type="password" placeholder="Senha" class="login-input" id="password" required>
+                <button type="submit" class="login-button">Entrar</button>
+            </form>
+            <div class="forgot-password">
+                <a href="#" onclick="showPasswordHint()">Esqueceu a Senha?</a>
+            </div>
+            <div class="password-hint" id="passwordHint">
+                Está na pasta da Área de Trabalho
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de tarefas -->
+    <div class="taskbar">
+        <div class="start-menu"><img src="img/windows-icon.png" alt="Iniciar" style="width: 45px; height: 45px;" onclick="goToInitialPage()"></div>
+        <div class="rectangle" style="color: black;"><p>Pesquisar</p></div>
+        <div class="taskbar-icons">
+            <img src="img/folder-icon.png" alt="Ícone 1" style="width: 28px; height: 28px;" onclick="goToInitialPage()">
+        </div>
+        <div class="taskbar-icons square">
+            <img src="img/chrome-icon.png" alt="Ícone 2" style="width: 28px; height: 28px;" onclick="goToInitialPage()">
+        </div>
+        <div class="espaco"></div>
+        <div class="clock">12:00 02/12/2024</div>
+    </div>
+
+    <script src="js/chrome.js"></script>
+    <script>
+        // Função para mostrar a dica de senha
+        function showPasswordHint() {
+            var hint = document.getElementById("passwordHint");
+            hint.style.display = (hint.style.display === "block") ? "none" : "block";
+        }
+
+        // Função para validar o login
+        function validateLogin() {
+            // Obtém os valores dos campos de usuário e senha
+            var username = document.getElementById("username").value.trim().toLowerCase();
+            var password = document.getElementById("password").value.trim().toLowerCase();
+
+            // Defina o usuário e senha corretos
+            var correctUsername = "hacker"; // caso-insensitivo
+            var correctPassword = "senha";  // caso-insensitivo
+
+            // Verifica se o usuário e a senha estão corretos
+            if (username === correctUsername && password === correctPassword) {
+                // Redireciona para "bomba.html" após o login bem-sucedido
+                window.location.href = "bomba.html"; // Redirecionamento
+                return false;  // Impede o envio do formulário padrão
+            } else {
+                alert("Usuário ou senha incorretos.");
+                return false;  // Impede o envio do formulário
+            }
+        }
+    </script>
+</body>
+</html>

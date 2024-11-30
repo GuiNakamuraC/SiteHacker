@@ -9,64 +9,81 @@
 <body>
     <!-- Barra de aba (cima) -->
     <div class="window-header">
+        <div class="espaco_pequeno"></div>
         <div class="window-icon">
-            <img src="img/chrome-icon.png" alt="Ícone do Chrome" class="chrome-icon">
+            <img src="img/chrome-icon.png" alt="Ícone do Chrome" class="chrome-icon" onclick="goToInitialPage()">
         </div>
+        <div class="espaco_pequeno"></div>
         <div class="window-title">
             <p>Nova guia</p>
-            <p></p>
-            <p></p>
-            <p>X</p>
+            <p class="espaco_pequeno"></p>
+            <p class="espaco_pequeno"></p>
+            <p class="espaco_pequeno"></p>
+            <p class="espaco_pequeno"></p>
+            <p>x</p>
         </div>
+        <div class="espaco_grande"></div>
         <div class="window-controls">
-            <button class="control-button minimize-button" title="Minimizar">_</button>
-            <button class="control-button maximize-button" title="Maximizar">□</button>
-            <button class="control-button close-button" title="Fechar">X</button>
+            <button class="control-button minimize-button" title="Minimizar" onclick="goToInitialPage()">-</button>
+            <button class="control-button maximize-button" title="Maximizar" onclick="goToInitialPage()">□</button>
+            <button class="control-button-red close-button" title="Fechar" onclick="goToInitialPage()">X</button>
+        </div>
+    </div>
+
+    <div class="window-search">
+        <p class="espaco_pequeno"></p>
+        <div class="search-top">
+            <input type="text" placeholder="Pesquisar no Google ou digitar URL" class="search-input">
         </div>
     </div>
 
     <!-- Tela inicial -->
     <div class="main-screen">
+        <div class="espaco_baixo"></div>
+        <div class="google-logo">
+            <img src="img/google-logo.png" alt="Logo Google" style="width: 300px; height: auto;">
+        </div> 
+        <div class="espaco_baixo"></div>
         <!-- Barra de pesquisa -->
         <div class="search-bar">
             <input type="text" placeholder="Pesquisar ou digitar o endereço" class="search-input">
         </div>
-
+        <div class="espaco_baixo"></div>
         <!-- Favoritos -->
         <div class="favorites">
             <div class="favorite-item">
-                <img src="img/google-icon.png" alt="Google">
-                <p>Google</p>
+                <img src="img/google.png" alt="Google" style="width: 50px; height: 50px;">
+                <p style="color: white;">Google</p>
             </div>
             <div class="favorite-item">
-                <img src="img/youtube-icon.png" alt="YouTube">
-                <p>YouTube</p>
+                <img src="img/deepweb.png" alt="DeepWeb" style="width: 50px; height: 50px;" onclick="showMessage('Por que você apertou aqui?')">
+                <p style="color: white;">DeepWeb</p>
             </div>
             <div class="favorite-item">
-                <img src="img/facebook-icon.png" alt="Facebook">
-                <p>Facebook</p>
+                <img src="img/bomba.png" alt="Bomba" style="width: 50px; height: 50px;" onclick="goToSenhaPage()">
+                <p style="color: white;">Bomba</p>
             </div>
             <div class="favorite-item">
-                <img src="img/twitter-icon.png" alt="Twitter">
-                <p>Twitter</p>
+                <img src="img/add.png" alt="Add" style="width: 50px; height: 50px;" onclick="showMessage('Não é possível nesse momento')">
+                <p style="color: white;">Adicionar</p>
             </div>
         </div>
     </div>
 
     <!-- Barra de tarefas -->
     <div class="taskbar">
-        <div class="start-menu"><img src="img/windows-icon.png" alt="Iniciar"></div>
-        <div class="rectangle"><p>Pesquisar</p></div>
+        <div class="start-menu"><img src="img/windows-icon.png" alt="Iniciar" style="width: 45px; height: 45px;" onclick="goToInitialPage()"></div>
+        <div class="rectangle" style="color: black;"><p>Pesquisar</p></div>
         <div class="taskbar-icons">
-            <img src="img/folder-icon.png" alt="Ícone 1">
+            <img src="img/folder-icon.png" alt="Ícone 1" style="width: 28px; height: 28px;" onclick="goToInitialPage()">
         </div>
         <div class="taskbar-icons square">
-            <img src="img/chrome-icon.png" alt="Ícone 2">
+            <img src="img/chrome-icon.png" alt="Ícone 2" style="width: 28px; height: 28px;" onclick="goToInitialPage()">
         </div>
         <div class="espaco"></div>
-        <div class="clock">12:00
-            02/12/2024
-        </div>
+        <div class="clock">12:00 02/12/2024</div>
     </div>
+
+    <script src="js/chrome.js"></script>
 </body>
 </html>
