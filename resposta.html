@@ -16,297 +16,90 @@
             background-color: black;
             color: #00FF00;
             overflow: hidden;
-            animation: bg-pan 5s infinite alternate;
-            font-size: 24px;
-        }
-
-        @keyframes bg-pan {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
         }
 
         .symbol-section {
             display: grid;
-            grid-template-columns: repeat(8, 1fr); /* Cria 9 colunas de largura igual */
-            gap: 30px; /* Adiciona um pequeno espaçamento entre os símbolos */
-            width: 80%; /* Ajusta a largura para ocupar todo o espaço disponível */
-            justify-items: center; /* Centraliza os itens dentro de suas células */
-            justify-content: center; /* Centraliza todo o grid no eixo horizontal */
+            grid-template-columns: repeat(8, 1fr);
+            gap: 20px;
+            width: 90%;
+            justify-items: center;
+            margin: 20px 0;
         }
 
         .symbol {
-            font-size: 80px;
+            font-size: 40px;
             background-color: #333;
-            color: #00FF00;
-            padding: 10px;
             border-radius: 10px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            width: 80px;
-            height: 80px;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .symbol:hover {
-            background-color: #111;
-            transform: rotate(360deg); /* Gira o símbolo ao passar o mouse */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .symbol::after {
-            content: ''; /* Inicializa o conteúdo para o símbolo */
-            transition: content 0.3s ease, transform 0.3s ease; /* Suaviza a transição */
-        }
-
-        /* Efeito de transição para a letra */
-        .symbol.hovered::after {
-            content: 'A'; /* Altera o conteúdo para 'A' quando a classe hovered for aplicada */
-        }
-
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s, box-shadow 0.3s, width 0.3s; /* Adicionando a transição para a largura */
-            border: 1px solid #00FF00;
-            width: 85%; /* Largura inicial */
-        }
-
-        .container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7);
-            width: 90%; /* Largura ao passar o mouse (ativado) */
-        }
-
-        .letter-box {
-            display: inline-block;
-            margin: 10px;
-        }
-
-        .letter {
-            font-size: 50px;
-            width: 60px;
-            height: 60px;
-            display: inline-block;
-            text-align: center;
-            line-height: 60px;
-            background-color: #333;
-            color: #00FF00;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            border: 1px solid #00FF00;
-        }
-
-        .letter:hover {
-            background-color: #111;
-            transform: rotate(10deg);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .arrow, button {
-            background-color: #111;
-            color: #00FF00;
-            font-size: 18px;
-            border: 1px solid #00FF00;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .arrow:hover, button:hover {
-            background-color: #00FF00;
-            color: black;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        button {
-            margin-top: 20px;
-            font-size: 20px;
-            padding: 10px 20px;
-            letter-spacing: 1.2px;
-            border: 1px solid #00FF00;
-        }
-
-        button:hover {
-            background-color: #00FF00;
-            color: black;
-            transform: scale(1.05);
-        }
-
-        #feedback {
-            font-size: 20px;
-            color: #FF0000;
-            margin-top: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.4s;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            position: relative;
         }
 
-        .modal.show {
-            visibility: visible;
+        .symbol img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: opacity 0.3s ease;
+        }
+
+        .symbol .letter {
+            position: absolute;
+            font-size: 2em;
+            color: #00FF00;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .symbol:hover img {
+            opacity: 0;
+        }
+
+        .symbol:hover .letter {
             opacity: 1;
         }
 
-        .modal-content{
-            background-color: #000000;
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            animation: pop-in 0.5s ease-out;
-            font-family: 'Courier New', Courier, monospace;
-            border: 2px solid #00FF00; /* Borda verde */
-        }
-        .modal-fail{
-            background-color: #000000;
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            animation: pop-in 0.5s ease-out;
-            font-family: 'Courier New', Courier, monospace;
-            border: 2px solid #ff0000; /* Borda verde */
-        }
-
-
-        .modal-fail {
-            background-color: #000000;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            border: 2px solid #ff0000; /* Borda verde */
-        }
-
-        @keyframes pop-in {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .fail-msg {
-            font-size: 22px;
-            animation: glitch 1s infinite;
-            color: #FF0000;
-        }
-
-        /* Estilo dos botões "Continuar" e "Tentar novamente" */
-        .modal-fail button {
-            background-color: black;
-            color: #ff0000;
-            font-size: 18px;
-            border: 2px solid #ff0000;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            letter-spacing: 1.5px;
-            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .modal-content button{
-            background-color: black;
-            color: #00ff04;
-            font-size: 18px;
-            border: 2px solid #00ff11;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            letter-spacing: 1.5px;
-            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .modal-content button:hover{
-            background-color: #00ff26;
-            color: black;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-fail button:hover {
-            background-color: #ff0000;
-            color: black;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        .symbol:hover {
+            transform: rotate(360deg); /* Gira o elemento */
+            background-color: #111;
         }
     </style>
 </head>
 <body>
-    <div id="success-modal" class="modal">
-        <div class="modal-content">
-            <button onclick="continueGame()">Continuar</button>
-        </div>
-    </div>
-
-    <div id="fail-modal" class="modal">
-        <div class="modal-fail">
-            <p class="fail-msg">CÓDIGO ERRADO</p>
-            <button onclick="resetGame()">Tentar novamente</button>
-        </div>
-    </div>
-
-    <div class="symbol-section">
-        <div class="symbol" onmouseover="changeToLetter(this, 0)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 1)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 2)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 3)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 4)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 5)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 6)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 7)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 8)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 9)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 10)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 11)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 12)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 13)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 14)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 15)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 16)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 17)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 18)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 19)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 20)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 21)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 22)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 23)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 24)" onmouseout="resetToSymbol(this)">#</div>
-        <div class="symbol" onmouseover="changeToLetter(this, 25)" onmouseout="resetToSymbol(this)">#</div>
+    <div class="symbol-section" id="symbol-section">
+        <!-- Os símbolos serão gerados dinamicamente pelo JavaScript -->
     </div>
 
     <script>
-        function changeToLetter(element, index) {
-            // Muda o conteúdo de # para a letra correspondente
-            const letter = String.fromCharCode(65 + index);  // 65 é o código ASCII de 'A'
-            element.innerText = letter;
+        function createSymbols() {
+            const section = document.getElementById("symbol-section");
+            for (let i = 0; i < 26; i++) {
+                const symbolDiv = document.createElement("div");
+                symbolDiv.classList.add("symbol");
+
+                // Adiciona a imagem
+                const img = document.createElement("img");
+                img.src = `simbolos/${String.fromCharCode(97 + i)}.png`;
+                img.alt = `símbolo ${String.fromCharCode(65 + i)}`;
+                symbolDiv.appendChild(img);
+
+                // Adiciona a letra sobreposta
+                const letterSpan = document.createElement("span");
+                letterSpan.classList.add("letter");
+                letterSpan.textContent = String.fromCharCode(65 + i); // Letra maiúscula
+                symbolDiv.appendChild(letterSpan);
+
+                section.appendChild(symbolDiv);
+            }
         }
 
-        function resetToSymbol(element) {
-            // Restaura o conteúdo para o símbolo '#'
-            element.innerText = '#';
-        }
+        // Cria os símbolos ao carregar a página
+        createSymbols();
     </script>
 </body>
 </html>
